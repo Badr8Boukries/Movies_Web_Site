@@ -1,0 +1,122 @@
+/* En-tête avec logo et barre de recherche */
+.div1 {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 20px 40px; 
+    background-color: #ffffff; 
+    border-bottom: 2px solid #e0e0e0; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto; 
+    max-width: 1200px; 
+}
+
+/* Limite la taille du logo et conserve ses proportions */
+#logo {
+    height: 60px;
+    width: auto;
+    margin-right: 20px; 
+}
+
+/* Permet à la barre de recherche de s'étendre pour remplir l'espace disponible */
+#search {
+    flex: 1;
+    margin: 0 20px; 
+    padding: 8px 12px;
+    border: 2px solid #cccccc; 
+    border-radius: 20px;
+    background-color: #f9f9f9; 
+    font-size: 16px;
+    transition: border-color 0.3s ease; 
+}
+
+#search:focus {
+    border-color: #007bff; 
+    outline: none; 
+}
+
+/* Conteneur du menu */
+.nav {
+    background-color: #f1f1f1;
+    padding: 10px 40px; 
+    border-top: 1px solid #e0e0e0; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+
+.menu {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    justify-content: flex-start; 
+}
+
+/* Style pour les éléments du menu */
+.menu li {
+    position: relative; 
+    margin: 0 15px; 
+}
+
+/* Style pour les liens du menu */
+.menu a {
+    text-decoration: none; 
+    color: #333; 
+    padding: 10px 15px; 
+    display: block; 
+    border-radius: 4px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* Effet au survol des liens du menu */
+.menu a:hover {
+    background-color: #007bff; 
+    color: #ffffff; 
+}
+
+/* Style pour les sous-listes */
+.sub-menu {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    list-style: none;
+    padding: 0; 
+    margin: 0; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    min-width: 160px; 
+    opacity: 0; 
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    transform: translateY(10px);
+}
+
+/* Affiche la sous-liste au survol de l'élément parent */
+.menu li:hover .sub-menu {
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* Style pour les éléments de la sous-liste */
+.sub-menu li {
+    margin: 0; 
+}
+
+/* Style pour les liens de la sous-liste */
+.sub-menu li a {
+    display: block; 
+    padding: 10px 15px; 
+    color: #333; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease; 
+}
+
+/* Effet au survol des liens de la sous-liste */
+.sub-menu li a:hover {
+    background-color: #f0f0f0; 
+    color: #007bff; 
+}
