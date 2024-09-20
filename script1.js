@@ -361,11 +361,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Les 5 meilleurs films de toute l'histoire
     const topMoviesOfAllTime = [
-        { title: "The GodFather", imageUrl: "film1.jpg", releaseDate: "1970", rated: "9.4", description: "Michael Corleone qui, après une attaque contre son père, se retrouve plongé dans le monde criminel de sa famille mafieuse" },
-        { title: "The Dark Knight", imageUrl: "film2.jpg", releaseDate: "2012", rated: "9.4", description: "Batman qui doit sauver Gotham City." },
-        { title: "Schindler's List", imageUrl: "film3.jpg", releaseDate: "1993", rated: "9.0", description: "Un homme d'affaires sauve des juifs pendant l'Holocauste." },
-        { title: "Pulp Fiction", imageUrl: "film4.jpg", releaseDate: "1994", rated: "8.9", description: "Des histoires entrecroisées de criminels à Los Angeles." },
-        { title: "Inception", imageUrl: "film5.jpg", releaseDate: "2010", rated: "8.8", description: "Un voleur entre dans les rêves des gens pour voler des secrets." }
+        { title: "The GodFather", imageUrl: "image/godfather.jpg", releaseDate: "1970", rated: "9.4", description: "Michael Corleone qui, après une attaque contre son père, se retrouve plongé dans le monde criminel de sa famille mafieuse" },
+        { title: "The Dark Knight", imageUrl: "image/godfather.jpg", releaseDate: "2012", rated: "9.4", description: "Batman qui doit sauver Gotham City." },
+        { title: "Schindler's List", imageUrl: "image/godfather.jpg", releaseDate: "1993", rated: "9.0", description: "Un homme d'affaires sauve des juifs pendant l'Holocauste." },
+        { title: "Pulp Fiction", imageUrl: "image/godfather.jpg", releaseDate: "1994", rated: "8.9", description: "Des histoires entrecroisées de criminels à Los Angeles." },
+        { title: "Inception", imageUrl: "image/godfather.jpg", releaseDate: "2010", rated: "8.8", description: "Un voleur entre dans les rêves des gens pour voler des secrets." }
     ];
 
     const moviesContainer = document.querySelector(".movies-container");
