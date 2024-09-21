@@ -371,8 +371,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const moviesContainer = document.querySelector(".movies-container");
     const titleElement = document.querySelector("#top-movies h1");
     const searchBar = document.querySelector("#search");
-    const logo = document.querySelector("#logo"); 
+    const logo = document.querySelector("#logo");
+    const modal = document.querySelector("#movie-modal");
+    const modalContent = document.querySelector("#movie-modal .modal-content");
+    const modalClose = document.querySelector("#movie-modal .close");
 
+    // Fonction pour afficher les films
     function displayMovies(movies, year) {
         moviesContainer.innerHTML = ""; 
         titleElement.textContent = year ? `5 Meilleurs Films de ${year}` : `5 Meilleurs Films de Toute l'Histoire`;
@@ -406,11 +410,17 @@ document.addEventListener("DOMContentLoaded", function() {
             movieCard.appendChild(movieRated);
             movieCard.appendChild(movieDesc);
 
+            // Ajouter l'événement de clic pour ouvrir la fenêtre modale
+            movieCard.addEventListener("click", function() {
+                showMovieDetails(movie);
+            });
+
             moviesContainer.appendChild(movieCard);
         });
     }
-    displayMovies(topMoviesOfAllTime); 
 
+    // Afficher les 5 meilleurs films de toute l'histoire
+    displayMovies(topMoviesOfAllTime);
 
     // Afficher les 5 meilleurs films de toute l'histoire en cliquant sur le logo
     logo.addEventListener("click", function() {
@@ -427,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Recherche par titre de film
+    // Fonction de recherche
     searchBar.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             const searchTerm = searchBar.value.trim().toLowerCase(); // Prendre en compte la casse
@@ -448,6 +458,32 @@ document.addEventListener("DOMContentLoaded", function() {
                 titleElement.textContent = `Aucun film trouvé pour "${searchTerm}"`;
                 moviesContainer.innerHTML = "";
             }
+        }
+    });
+
+// Fonction pour afficher la fenêtre modale avec les détails du film
+function showMovieDetails(movie) {
+    modalContent.innerHTML = `
+        <span class="close">&times;</span>
+        <h2>${movie.title}</h2>
+        <img src="${movie.imageUrl}" alt="${movie.title}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
+        <p><strong>Date de sortie :</strong> ${movie.releaseDate}</p>
+        <p><strong>Note :</strong> ${movie.rated}</p>
+        <p>${movie.description}</p>
+    `;
+    modal.style.display = "block";
+
+    // Fermer la fenêtre modale
+    document.querySelector(".close").addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+}
+
+
+    // Fermer la fenêtre modale si on clique à l'extérieur de celle-ci
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
         }
     });
 });
