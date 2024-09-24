@@ -368,17 +368,19 @@ document.addEventListener("DOMContentLoaded", function() {
         { title: "Inception", imageUrl: "image/godfather.jpg", releaseDate: "2010", rated: "8.8", description: "Un voleur entre dans les rêves des gens pour voler des secrets." }
     ];
 
+
     const moviesContainer = document.querySelector(".movies-container");
     const titleElement = document.querySelector("#top-movies h1");
     const searchBar = document.querySelector("#search");
     const logo = document.querySelector("#logo");
     const modal = document.querySelector("#movie-modal");
-    const modalContent = document.querySelector("#movie-modal .modal-content");
     const modalClose = document.querySelector("#movie-modal .close");
+    const ratingInput = document.getElementById("rating-input");
+    const submitRatingButton = document.getElementById("submit-rating");
+    const userRatingElement = document.getElementById("user-rating");
 
-    // Fonction pour afficher les films
     function displayMovies(movies, year) {
-        moviesContainer.innerHTML = ""; 
+        moviesContainer.innerHTML = "";
         titleElement.textContent = year ? `5 Meilleurs Films de ${year}` : `5 Meilleurs Films de Toute l'Histoire`;
 
         movies.forEach(movie => {
@@ -419,6 +421,39 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    function showMovieDetails(movie) {
+        const moviePoster = modal.querySelector(".movie-poster");
+        const movieTitle = modal.querySelector(".movie-title");
+        const movieMeta = modal.querySelector(".movie-meta");
+        const movieDescription = modal.querySelector(".movie-description");
+        const movieRated = modal.querySelector(".movie-rating");
+
+        moviePoster.src = movie.imageUrl;
+        movieTitle.textContent = movie.title;
+        movieMeta.textContent = `${movie.releaseDate} | Réalisateur | Genre`;
+        movieDescription.textContent = movie.description;
+
+        // Afficher la note existante ou un message par défaut
+        userRatingElement.textContent = movie.rated; 
+        ratingInput.value = ""; // Réinitialiser la barre de saisie
+
+        modal.style.display = "block"; // Afficher la fenêtre modale
+    }
+
+    modalClose.addEventListener("click", function() {
+        modal.style.display = "none"; // Fermer la fenêtre modale
+    });
+
+    submitRatingButton.addEventListener("click", function() {
+        const newRating = parseFloat(ratingInput.value);
+        if (!isNaN(newRating) && newRating >= 0 && newRating <= 10) {
+            userRatingElement.textContent = `Votre rating est : ${newRating.toFixed(1)}`; // Afficher le nouveau rating
+            alert("Votre rating a été soumis !");
+        } else {
+            alert("Veuillez entrer un rating valide entre 0.0 et 10.0");
+        }
+    });
+
     // Afficher les 5 meilleurs films de toute l'histoire
     displayMovies(topMoviesOfAllTime);
 
@@ -458,32 +493,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 titleElement.textContent = `Aucun film trouvé pour "${searchTerm}"`;
                 moviesContainer.innerHTML = "";
             }
-        }
-    });
-
-// Fonction pour afficher la fenêtre modale avec les détails du film
-function showMovieDetails(movie) {
-    modalContent.innerHTML = `
-        <span class="close">&times;</span>
-        <h2>${movie.title}</h2>
-        <img src="${movie.imageUrl}" alt="${movie.title}" style="max-width: 100%; height: auto; display: block; margin: 0 auto;" />
-        <p><strong>Date de sortie :</strong> ${movie.releaseDate}</p>
-        <p><strong>Note :</strong> ${movie.rated}</p>
-        <p>${movie.description}</p>
-    `;
-    modal.style.display = "block";
-
-    // Fermer la fenêtre modale
-    document.querySelector(".close").addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-}
-
-
-    // Fermer la fenêtre modale si on clique à l'extérieur de celle-ci
-    window.addEventListener("click", function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
         }
     });
 });

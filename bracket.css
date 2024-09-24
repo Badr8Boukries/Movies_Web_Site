@@ -417,8 +417,9 @@ html {
 
 
 
+
 .modal {
-  display: none;
+  display: none; 
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -470,7 +471,9 @@ html {
 .movie-info-container {
   padding: 30px;
   position: relative;
-  margin-top: -100px;
+  margin-top: -100px; 
+  display: flex; 
+  flex-direction: column; 
 }
 
 /* Movie poster */
@@ -479,16 +482,15 @@ html {
   height: 180px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: -90px;
-  left: 30px;
-  background-size: cover;
-  background-position: center;
+  position: relative; 
+  margin-bottom: 20px; 
 }
 
 /* Movie details */
 .movie-details {
-  margin-left: 150px;
+  margin-left: 150px; 
+  display: flex; 
+  flex-direction: column;
 }
 
 .movie-title {
@@ -551,19 +553,19 @@ html {
   }
 
   .movie-info-container {
-      margin-top: -50px;
+      margin-top: -50px; 
   }
 
   .movie-poster {
       width: 90px;
       height: 135px;
-      top: -70px;
-      left: 20px;
+      top: -70px; 
+      left: 20px; 
   }
 
   .movie-details {
-      margin-left: 0;
-      margin-top: 70px;
+      margin-left: 0; 
+      margin-top: 70px; 
   }
 
   .movie-title {
